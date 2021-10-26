@@ -7,15 +7,19 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  
   const auth = getAuth();
 
   const signInUsingGoogle = () => {
+    setIsLoading(true)
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
   
       })
+    .finally(()=>setIsLoading(false))
   }
   // observe user state change অন্য ট্যাবে গেলেও যাতে sync থাকে   
     useEffect(() => {
@@ -24,20 +28,24 @@ const useFirebase = () => {
           setUser(user);
         } else {
           setUser({})
-        }
+       }
+       setIsLoading(false);
       });
       return () => unsubscribed;
     },[])
     
-    const logOut = () => {
+  const logOut = () => {
+      setIsLoading(true)
       signOut(auth)
         .then(() => { })
+        .finally(()=>setIsLoading(false))
     }
   
   return {
     user,
+    isLoading,
     signInUsingGoogle,
-    logOut
+    logOut,
   }
 }
 
