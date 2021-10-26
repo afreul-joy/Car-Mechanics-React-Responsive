@@ -1,10 +1,12 @@
 import React from 'react';
 import {Container,Nav,Navbar} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+  const {user,logOut} = useAuth();
   return (
-   
+
   <div className="sticky-top container">
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
@@ -15,9 +17,11 @@ const Header = () => {
             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>     
               <Nav.Link as={Link} to="/home#services">Services</Nav.Link>
               <Nav.Link as={Link} to="/home#experts">Experts</Nav.Link>
-              <Nav.Link as={Link} to="/login">login</Nav.Link>
+            {user?.email ?
+            <button onClick={logOut} type="button" class="btn btn-light">LogOut</button> :
+              <Nav.Link as={Link} to="/login">login</Nav.Link>}
                 <Navbar.Text>
-                  Signed in as: <a href="#login">Mark Otto</a>
+              Signed in as: <a href="#login">{user?.displayName}</a>
                 </Navbar.Text>
             </Navbar.Collapse>
         </Container>

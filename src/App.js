@@ -1,5 +1,6 @@
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './Contexts/AuthProvider';
 import Booking from './Pages/Booking/Booking/Booking';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
@@ -9,7 +10,8 @@ import Header from './Pages/Shared/Header/Header';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <AuthProvider>
+          <BrowserRouter>
         <Header></Header>
         <Switch>
           <Route exact path="/">
@@ -27,8 +29,9 @@ function App() {
           <Route path="*">
             <NotFound></NotFound>
           </Route>
-        </Switch>
-      </BrowserRouter>
+            </Switch>
+          </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
