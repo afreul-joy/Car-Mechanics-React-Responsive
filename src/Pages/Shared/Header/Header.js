@@ -9,15 +9,15 @@ const Header = () => {
   return (
 
   <div className="sticky-top container">
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Car Mechanics</Navbar.Brand>
             <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">          
               {/* <Nav.Link href="/home#home">Home</Nav.Link> */}
-            <Nav.Link as={HashLink} to="/home#home" className="btn btn-outline-primary text-light" >Home</Nav.Link>     
-              <Nav.Link as={HashLink} to="/home#services" className="btn btn-outline-primary text-light">Services</Nav.Link>
-              <Nav.Link as={HashLink} to="/home#experts" className="btn btn-outline-primary text-light">Experts</Nav.Link>
+            <Nav.Link as={HashLink} to="/home#home" className="btn btn-outline-dark text-light" >Home</Nav.Link>     
+              <Nav.Link as={HashLink} to="/home#services" className="btn btn-outline-dark  text-light">Services</Nav.Link>
+              <Nav.Link as={HashLink} to="/home#experts" className="btn btn-outline-dark text-light">Experts</Nav.Link>
             {user?.email ?
             <button onClick={logOut} type="button" class="btn btn-light mx-3 ">LogOut</button> :
               <Nav.Link as={Link} to="/login">login</Nav.Link>}
