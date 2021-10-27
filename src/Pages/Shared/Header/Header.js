@@ -17,15 +17,17 @@ const Header = () => {
               {/* <Nav.Link href="/home#home">Home</Nav.Link> */}
             <Nav.Link as={HashLink} to="/home#home" className="btn btn-outline-dark text-light" >Home</Nav.Link>     
               <Nav.Link as={HashLink} to="/home#services" className="btn btn-outline-dark  text-light">Services</Nav.Link>
-              <Nav.Link as={HashLink} to="/home#experts" className="btn btn-outline-dark text-light">Experts</Nav.Link>
+            <Nav.Link as={HashLink} to="/home#experts" className="btn btn-outline-dark text-light">Experts</Nav.Link>
+            
             {user?.email ?
             <button onClick={logOut} type="button" class="btn btn-light mx-3 ">LogOut</button> :
-              <Nav.Link as={Link} to="/login">login</Nav.Link>}
+              <Nav.Link as={Link} to="/login" >login</Nav.Link>}
+            
                 <Navbar.Text>
               Signed in as: <a href="#login">{user?.displayName}</a>
                 </Navbar.Text>
             </Navbar.Collapse>
-        </Container>
+        </Container> 
     </Navbar>
   </div>
   );
